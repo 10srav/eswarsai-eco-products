@@ -4,7 +4,6 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { StickyWhatsApp } from "@/components/StickyWhatsApp";
 import { Grain } from "@/components/decor/Grain";
-import { CustomCursor } from "@/components/decor/CustomCursor";
 import { SmoothScroll } from "@/components/decor/SmoothScroll";
 import { ScrollProgress } from "@/components/decor/ScrollProgress";
 import { JsonLd } from "@/components/JsonLd";
@@ -52,7 +51,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${fraunces.variable} ${interTight.variable} ${jetbrainsMono.variable}`}>
       <body className="bg-bone text-ink antialiased">
         <Grain />
-        <CustomCursor />
         <ScrollProgress />
         <Navigation />
         <SmoothScroll>
