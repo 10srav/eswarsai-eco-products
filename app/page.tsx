@@ -20,8 +20,8 @@ export default function HomePage() {
       <Marquee />
       <BrandStrip />
       <EditorialBreak
-        image="/images/factory/non-woven-bags-pile.jpg"
-        alt="Stack of finished non-woven bags ready for despatch"
+        image="/images/factory/non-woven-shopping-bag.jpg"
+        alt="Reusable non-woven shopping bag"
         kicker="Built with purpose"
         headline="Built for businesses replacing plastic with purpose."
         caption="Twelve years of bag manufacturing — built around one belief: India deserves manufacturers who care about the planet they operate on."
