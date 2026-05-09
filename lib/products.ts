@@ -142,6 +142,20 @@ export const products: Product[] = [
 export const productsBySlug = Object.fromEntries(products.map((p) => [p.slug, p]));
 
 export const galleryImages = [
+  { src: "/images/gallery/kakinada-coop-bank.jpg", alt: "Custom jute tote with KCB logo for The Kakinada Co-operative Town Bank" },
+  { src: "/images/gallery/wedding-rg-monogram.jpg", alt: "Wedding favour jute totes — Rajasimha and Greeshma monogram, dual colourways" },
+  { src: "/images/gallery/ap-gramina-bank-sankranti.jpg", alt: "Jute promotional bag for Andhra Pradesh Gramina Bank, Sankranti 2026 edition" },
+  { src: "/images/gallery/shrimp-synergy-project.jpg", alt: "Branded jute carrier for the Shrimp Synergy Project on the factory floor" },
+  { src: "/images/gallery/snvzp-school-reunion.jpg", alt: "Jute reunion bag with mandala motif — SNVZP High School, Tallarevu" },
+  { src: "/images/gallery/upanayanam-thank-you.jpg", alt: "Jute return-gift bag with yellow trim — Upanayanam thank-you print" },
+  { src: "/images/gallery/red-mandala-jute.jpg", alt: "Hand-printed jute tote with bold red mandala half-circle" },
+  { src: "/images/gallery/cactus-print-jute.jpg", alt: "Boutique jute tote with cactus and succulent illustration" },
+  { src: "/images/gallery/virtue-iso-certified.jpg", alt: "Corporate jute bag printed for Virtue — ISO 9001:2015 certified, GAFTA approved" },
+  { src: "/images/gallery/rose-milk-rajahmundry.png", alt: "Non-woven D-cut bag for Rajahmundry Rose Milk with bilingual print and city skyline" },
+  { src: "/images/gallery/rudra-eye-hospital.jpg", alt: "Non-woven D-cut bag for Rudra Eye Hospital, Vikarabad — Telugu and English print" },
+  { src: "/images/gallery/baby-wonders-store.jpg", alt: "Non-woven D-cut bag for Baby Wonders, the complete baby store at Anaparthi" },
+  { src: "/images/gallery/d-cut-size-range.jpg", alt: "Non-woven D-cut bag size range — 9×12 to 16×20 inch laid out for scale" },
+  { src: "/images/gallery/padmavathi-fabric-stack.jpg", alt: "Stack of pink non-woven D-cut bags for Padmavathi Fabric Studio — packed warehouse pile" },
   { src: "/images/factory/non-woven-shopping-bag.jpg", alt: "Reusable non-woven shopping bag" },
   { src: "/images/products/non-woven-bag.jpg", alt: "Non-woven shopping bag detail" },
   { src: "/images/factory/eco-bag-display.jpg", alt: "Eco-friendly bag display" },
@@ -152,6 +166,118 @@ export const galleryImages = [
   { src: "/images/products/non-woven-w-cut-bags-500x500-1.webp", alt: "W-cut non-woven bag stack" },
   { src: "/images/products/non-woven-carry-bags-500x500-1.webp", alt: "Non-woven carry bag assortment" },
   { src: "/images/products/product-jpeg-500x500-1.webp", alt: "Drawstring non-woven pouch" },
+];
+
+export type ShowcaseItem =
+  | { kind: "image"; src: string; alt: string; caption: string; sub?: string }
+  | { kind: "video"; src: string; poster?: string; alt: string; caption: string; sub?: string };
+
+export const galleryShowcase: ShowcaseItem[] = [
+  {
+    kind: "video",
+    src: "/images/gallery/factory-floor.mp4",
+    alt: "A walk through the Eswar Sai factory floor",
+    caption: "Inside the line",
+    sub: "Where every bag is born",
+  },
+  {
+    kind: "image",
+    src: "/images/gallery/kakinada-coop-bank.jpg",
+    alt: "Custom jute tote with KCB logo for The Kakinada Co-operative Town Bank",
+    caption: "Kakinada Co-op Bank",
+    sub: "Cooperative · Branded jute",
+  },
+  {
+    kind: "image",
+    src: "/images/gallery/wedding-rg-monogram.jpg",
+    alt: "Wedding favour jute totes — Rajasimha and Greeshma monogram in two colourways",
+    caption: "Rajasimha × Greeshma",
+    sub: "Wedding favours · Dual colourway",
+  },
+  {
+    kind: "image",
+    src: "/images/gallery/rose-milk-rajahmundry.png",
+    alt: "Non-woven D-cut bag for Rajahmundry Rose Milk with bilingual print and city skyline",
+    caption: "Rajahmundry Rose Milk",
+    sub: "Hospitality · D-cut non-woven",
+  },
+  {
+    kind: "image",
+    src: "/images/gallery/ap-gramina-bank-sankranti.jpg",
+    alt: "Jute promotional bag for Andhra Pradesh Gramina Bank, Sankranti 2026 edition",
+    caption: "AP Gramina Bank",
+    sub: "Sankranti 2026 · Promo jute",
+  },
+  {
+    kind: "image",
+    src: "/images/gallery/shrimp-synergy-project.jpg",
+    alt: "Branded jute carrier for the Shrimp Synergy Project on the factory floor",
+    caption: "Shrimp Synergy Project",
+    sub: "Government · Jute carrier",
+  },
+  {
+    kind: "image",
+    src: "/images/gallery/snvzp-school-reunion.jpg",
+    alt: "Jute reunion bag with mandala motif — SNVZP High School, Tallarevu",
+    caption: "SNVZP Reunion",
+    sub: "Alumni · Mandala print",
+  },
+  {
+    kind: "image",
+    src: "/images/gallery/upanayanam-thank-you.jpg",
+    alt: "Jute return-gift bag with yellow trim — Upanayanam thank-you print",
+    caption: "Upanayanam favours",
+    sub: "Ceremony · Return gifts",
+  },
+  {
+    kind: "image",
+    src: "/images/gallery/red-mandala-jute.jpg",
+    alt: "Hand-printed jute tote with bold red mandala half-circle",
+    caption: "Red mandala tote",
+    sub: "Lifestyle · Statement print",
+  },
+  {
+    kind: "image",
+    src: "/images/gallery/cactus-print-jute.jpg",
+    alt: "Boutique jute tote with cactus and succulent illustration",
+    caption: "Cactus illustration",
+    sub: "Boutique · Lifestyle jute",
+  },
+  {
+    kind: "image",
+    src: "/images/gallery/virtue-iso-certified.jpg",
+    alt: "Corporate jute bag printed for Virtue — ISO 9001:2015 certified, GAFTA approved",
+    caption: "Virtue Inspection",
+    sub: "Corporate · ISO-certified",
+  },
+  {
+    kind: "image",
+    src: "/images/gallery/rudra-eye-hospital.jpg",
+    alt: "Non-woven D-cut bag for Rudra Eye Hospital, Vikarabad",
+    caption: "Rudra Eye Hospital",
+    sub: "Healthcare · Bilingual print",
+  },
+  {
+    kind: "image",
+    src: "/images/gallery/baby-wonders-store.jpg",
+    alt: "Non-woven D-cut bag for Baby Wonders — the complete baby store, Anaparthi",
+    caption: "Baby Wonders",
+    sub: "Retail · D-cut non-woven",
+  },
+  {
+    kind: "image",
+    src: "/images/gallery/d-cut-size-range.jpg",
+    alt: "Non-woven D-cut bag size range — 9×12 to 16×20 inch laid out for scale",
+    caption: "Size range, 9×12 → 16×20",
+    sub: "Specification · Scale shot",
+  },
+  {
+    kind: "image",
+    src: "/images/gallery/padmavathi-fabric-stack.jpg",
+    alt: "Stack of pink non-woven D-cut bags for Padmavathi Fabric Studio",
+    caption: "Padmavathi Fabric Studio",
+    sub: "Bulk order · Stacked & ready",
+  },
 ];
 
 export const industries = [

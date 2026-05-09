@@ -1,6 +1,6 @@
 import { PageHero } from "@/components/sections/PageHero";
 import { CTABanner } from "@/components/sections/CTABanner";
-import { GalleryMasonry } from "@/components/sections/GalleryMasonry";
+import { GalleryShowcase } from "@/components/sections/GalleryShowcase";
 import { JsonLd } from "@/components/JsonLd";
 import { buildMetadata } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/schema";
@@ -8,17 +8,18 @@ import { breadcrumbSchema } from "@/lib/schema";
 export const metadata = buildMetadata({
   title: "Gallery",
   description:
-    "Manufacturing line, finished products, and people doing the work — a visual tour of what eco-friendly non-woven and jute bag manufacturing looks like in Kakinada, Andhra Pradesh.",
+    "Real client work — jute and non-woven bags we've manufactured for cooperative banks, weddings, hospitals, boutiques, and retailers across Andhra Pradesh and South India.",
   path: "/gallery",
   keywords: [
     "non woven bag manufacturing",
-    "factory tour bag manufacturer",
-    "eco bag manufacturer Andhra Pradesh",
-    "Kakinada",
+    "jute bag manufacturer Andhra Pradesh",
+    "custom printed jute bag Kakinada",
+    "wedding favour jute totes",
+    "non-woven D-cut bag supplier",
+    "bag printing Rajahmundry",
     "Vizag bag manufacturer",
-    "Hyderabad bag supplier",
-    "South India non-woven manufacturer",
-    "behind the line bag factory",
+    "bag factory Andhra Pradesh",
+    "client work portfolio bag manufacturer",
   ],
 });
 
@@ -26,12 +27,12 @@ export default function GalleryPage() {
   return (
     <>
       <PageHero
-        eyebrow="The work, the line, the people"
-        title="A visual tour of Eswar Sai."
-        lede="Manufacturing isn't pretty. We made it look pretty anyway. Browse by bags, manufacturing line, or detail."
+        eyebrow="Made for them. Photographed on the floor."
+        title="A gallery of bags we've shipped."
+        lede="Cooperative banks, weddings, hospitals, boutiques. Every photo below is a real order from our line — captured before it left the building."
       />
 
-      <GalleryMasonry />
+      <GalleryShowcase />
 
       <CTABanner />
       <JsonLd
