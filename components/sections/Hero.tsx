@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight } from "lucide-react";
 import { Counter } from "@/components/ui/Counter";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { HeroBag } from "@/components/sections/HeroBag";
 import { company } from "@/lib/company";
 import { cn } from "@/lib/utils";
 
@@ -46,7 +46,6 @@ function nowIST(): Status {
 
 export function Hero() {
   const heroRef = useRef<HTMLElement>(null);
-  const imageWrapRef = useRef<HTMLDivElement>(null);
   const titleGroupRef = useRef<HTMLDivElement>(null);
   const [status, setStatus] = useState<Status | null>(null);
   const [activeWord, setActiveWord] = useState(0);
@@ -73,19 +72,12 @@ export function Hero() {
     if (reduced) return;
     ensureRegistered();
     const hero = heroRef.current;
-    const imageWrap = imageWrapRef.current;
     const titleGroup = titleGroupRef.current;
-    if (!hero || !imageWrap || !titleGroup) return;
+    if (!hero || !titleGroup) return;
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "expo.out" }, delay: 0.15 });
       tl.fromTo(
-        imageWrap,
-        { clipPath: "inset(100% 0 0 0)" },
-        { clipPath: "inset(0% 0 0 0)", duration: 1.4 },
-        0,
-      )
-        .fromTo(
           ".hero-status",
           { opacity: 0, y: 8 },
           { opacity: 0.7, y: 0, duration: 0.9 },
@@ -134,16 +126,6 @@ export function Hero() {
           1.45,
         );
 
-      gsap.to(imageWrap, {
-        y: 100,
-        ease: "none",
-        scrollTrigger: {
-          trigger: hero,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
       gsap.to(titleGroup, {
         yPercent: -8,
         ease: "none",
@@ -172,38 +154,6 @@ export function Hero() {
             "radial-gradient(ellipse at 80% 20%, rgba(149,213,178,0.28), transparent 50%), radial-gradient(ellipse at 10% 90%, rgba(82,183,136,0.22), transparent 60%)",
         }}
       />
-
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute right-0 top-1/2 z-0"
-        style={{
-          width: "min(70vh, 720px)",
-          height: "70vh",
-          transform: "translate(8vw, -50%) rotate(-3deg)",
-        }}
-      >
-        <div
-          ref={imageWrapRef}
-          className="relative h-full w-full overflow-hidden rounded-[12px]"
-          style={{ willChange: "clip-path, transform" }}
-        >
-          <Image
-            src="/images/products/non-woven-bag.jpg"
-            alt=""
-            fill
-            priority
-            sizes="(max-width: 768px) 80vw, 60vw"
-            className="object-cover"
-          />
-          <div
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(14,42,30,0.42), rgba(14,42,30,0.05) 40%, rgba(14,42,30,0.55)), radial-gradient(ellipse at 50% 50%, transparent 50%, rgba(14,42,30,0.55))",
-            }}
-          />
-        </div>
-      </div>
 
       <div
         className="hero-edge pointer-events-none absolute right-4 top-1/2 z-20 hidden -translate-y-1/2 origin-right rotate-[-90deg] whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.3em] text-bone opacity-[0.55] md:block"
@@ -280,8 +230,10 @@ export function Hero() {
         </div>
       </div>
 
+      <HeroBag />
+
       <div className="relative z-10">
-        <div className="mt-10 flex flex-wrap items-end justify-between gap-10">
+        <div className="mt-6 flex flex-wrap items-end justify-between gap-10 md:mt-10">
           <p className="hero-lede max-w-md text-base leading-relaxed opacity-85 md:text-[17px]">
             We manufacture premium non-woven and jute bags for forward-thinking
             brands. Custom prints, every gauge, every shape — built to be reused,

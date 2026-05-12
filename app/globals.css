@@ -30,6 +30,8 @@
   --animate-wa-ring: wa-ring 2.4s infinite;
   --animate-fall: fall 9s linear infinite;
   --animate-leaffall: leaffall 9s ease-in infinite;
+  --animate-bag-float: bag-float 11s ease-in-out infinite;
+  --animate-bag-corner: bag-corner 3.6s ease-in-out infinite;
 }
 
 @keyframes pulse-soft {
@@ -55,6 +57,15 @@
   0% { transform: translateY(-30px) rotate(0deg) translateX(0); }
   50% { transform: translateY(320px) rotate(120deg) translateX(40px); }
   100% { transform: translateY(640px) rotate(280deg) translateX(-30px); }
+}
+@keyframes bag-float {
+  0%   { transform: translate3d(0, 0, 0); }
+  50%  { transform: translate3d(10px, -28px, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+@keyframes bag-corner {
+  0%, 100% { opacity: 0.35; }
+  50%      { opacity: 0.85; }
 }
 
 @layer base {
