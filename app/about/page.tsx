@@ -73,8 +73,8 @@ export default function AboutPage() {
             </div>
             <div className="relative aspect-[4/5] overflow-hidden rounded-md md:aspect-[3/4]">
               <Image
-                src="/images/products/non-woven-bag-manufacturer-in-rajkot.jpg"
-                alt="Non-woven bag manufacturing line"
+                src="/images/products/eswar-sai-kakinada-manufacturing-line.jpg"
+                alt="Eswar Sai non-woven bag manufacturing line in Kakinada, Andhra Pradesh"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"

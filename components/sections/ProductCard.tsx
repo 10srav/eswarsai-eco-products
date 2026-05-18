@@ -53,9 +53,8 @@ export function ProductCard({ product, className }: { product: Product; classNam
     <Link
       ref={cardRef}
       href={`/products/${product.slug}`}
-      data-cursor="view"
       className={cn(
-        "group relative flex h-[540px] w-[380px] shrink-0 flex-col overflow-hidden rounded-md border bg-gradient-to-b from-forest-deep to-ink text-bone transition-transform duration-500 hover:-translate-y-2",
+        "group relative flex h-[540px] w-[380px] shrink-0 flex-col overflow-hidden rounded-md border bg-gradient-to-b from-forest-deep to-ink text-bone transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] hover:-translate-y-2 hover:shadow-[0_30px_60px_-20px_rgba(14,42,30,0.45)]",
         product.highlight
           ? "border-leaf/40 from-forest/60 via-leaf/10 to-ink"
           : "border-bone/[0.12]",
@@ -68,14 +67,27 @@ export function ProductCard({ product, className }: { product: Product; classNam
           alt={product.image.alt}
           fill
           sizes="(max-width: 768px) 80vw, 380px"
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          className="object-cover saturate-[0.85] transition-[transform,filter] duration-700 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:scale-[1.07] group-hover:saturate-100"
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full bg-leaf text-forest-deep opacity-0 transition-all duration-500 ease-out group-hover:rotate-[360deg] group-hover:opacity-100"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-forest-deep/85 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        />
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute right-4 top-4 inline-flex items-center gap-2 overflow-hidden rounded-full bg-leaf py-2 pl-2 pr-2 text-[11px] uppercase tracking-[0.18em] text-forest-deep opacity-0 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:pr-4 group-hover:opacity-100"
         >
-          <ArrowUpRight size={16} strokeWidth={2.25} />
+          <span className="grid h-6 w-6 place-items-center">
+            <ArrowUpRight size={14} strokeWidth={2.25} />
+          </span>
+          <span className="hidden w-0 whitespace-nowrap opacity-0 transition-all duration-500 group-hover:inline group-hover:w-auto group-hover:opacity-100">View</span>
         </span>
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-0 left-0 right-0 translate-y-full bg-forest-deep/85 px-6 py-3 mono text-[10px] uppercase tracking-[0.22em] text-sage backdrop-blur-sm transition-transform duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:translate-y-0"
+        >
+          {product.spec}
+        </div>
       </div>
 
       <div className="flex h-[35%] flex-col justify-between px-6 py-5">
@@ -83,7 +95,7 @@ export function ProductCard({ product, className }: { product: Product; classNam
           {product.number} · {product.category.toUpperCase()}
         </div>
         <div className="flex items-end justify-between gap-4">
-          <h3 className="serif text-[22px] font-light leading-[1.1] tracking-[-0.02em]">
+          <h3 className="serif text-[22px] font-light leading-[1.1] tracking-[-0.02em] transition-colors duration-300 group-hover:text-sage">
             {product.name}
           </h3>
           <span className="mono shrink-0 rounded-full bg-sage/15 px-3 py-1 text-[10px] uppercase tracking-[0.14em] text-sage">

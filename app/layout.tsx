@@ -48,8 +48,14 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${interTight.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en-IN" className={`${fraunces.variable} ${interTight.variable} ${jetbrainsMono.variable}`}>
       <body className="bg-bone text-ink antialiased">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-md focus:bg-forest-deep focus:px-4 focus:py-2 focus:text-bone focus:outline focus:outline-2 focus:outline-leaf"
+        >
+          Skip to content
+        </a>
         <Grain />
         <ScrollProgress />
         <Navigation />

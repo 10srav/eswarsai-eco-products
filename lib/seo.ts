@@ -6,7 +6,7 @@ const TITLE_BASE = `${company.name} — Replace Plastic. Save Nature.`;
 const DESC_BASE = company.shortDescription;
 
 const OG_IMAGE = {
-  url: `${SITE}/og.png`,
+  url: `${SITE}/opengraph-image`,
   width: 1200,
   height: 630,
   alt: TITLE_BASE,
@@ -37,18 +37,7 @@ export function buildMetadata({
     metadataBase: new URL(SITE),
     title: fullTitle,
     description: desc,
-    keywords: keywords ?? [
-      "non woven bag manufacturer",
-      "jute bag supplier",
-      "eco bag manufacturer",
-      "reusable bags",
-      "sustainable packaging",
-      "Andhra Pradesh",
-      "Kakinada",
-      "non woven bag manufacturer in Andhra Pradesh",
-      "best non woven bag manufacturer",
-      "eco friendly carry bags",
-    ],
+    ...(keywords ? { keywords } : {}),
     alternates: { canonical: url },
     robots: noindex
       ? { index: false, follow: false }

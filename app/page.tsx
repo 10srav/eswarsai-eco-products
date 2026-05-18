@@ -10,8 +10,6 @@ import { IndustriesPreview } from "@/components/sections/IndustriesPreview";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { GalleryPreview } from "@/components/sections/GalleryPreview";
 import { CTABanner } from "@/components/sections/CTABanner";
-import { JsonLd } from "@/components/JsonLd";
-import { faqSchema } from "@/lib/schema";
 
 export default function HomePage() {
   return (
@@ -34,7 +32,7 @@ export default function HomePage() {
       <ImpactCounters />
       <IndustriesPreview />
       <EditorialBreak
-        image="/images/products/non-woven-bag-manufacturer-in-rajkot.jpg"
+        image="/images/products/eswar-sai-kakinada-manufacturing-line.jpg"
         alt="Inside the manufacturing line"
         kicker="Inside the line"
         headline="Two production lines. In-house printing. Schedules we keep."
@@ -46,7 +44,6 @@ export default function HomePage() {
       <ProcessSteps />
       <GalleryPreview />
       <CTABanner />
-      <JsonLd id="ld-faq" data={faqSchema} />
     </>
   );
 }

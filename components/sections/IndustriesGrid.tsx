@@ -68,9 +68,8 @@ export function IndustriesGrid() {
           {industries.map((it) => (
             <Link
               key={it.slug}
-              href="/industries"
+              href={`/industries/${it.slug}`}
               data-cell
-              data-cursor="link"
               className="group flex min-h-[260px] flex-col justify-between bg-bone p-10 transition-colors hover:bg-forest-deep hover:text-bone"
             >
               <div>

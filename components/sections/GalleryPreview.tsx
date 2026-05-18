@@ -70,7 +70,7 @@ export function GalleryPreview() {
           </div>
           <Link
             href="/gallery"
-            data-cursor="link"
+
             className="group inline-flex items-center gap-2 self-start rounded-full border border-forest-deep/25 px-6 py-3 text-sm transition-colors hover:bg-forest-deep hover:text-bone"
           >
             View full gallery
@@ -83,7 +83,7 @@ export function GalleryPreview() {
             <div
               key={img.src}
               data-tile
-              data-cursor="view"
+
               className="group relative aspect-[4/5] overflow-hidden rounded-md bg-forest/10"
             >
               <Image

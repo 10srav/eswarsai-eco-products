@@ -41,7 +41,7 @@ export function ProductsFilterableGrid() {
     <section className="bg-forest-deep py-16 md:py-24">
       <div className="sticky top-[68px] z-30 mb-10 border-y border-bone/10 bg-forest-deep/95 py-4 backdrop-blur-md md:top-[80px] md:mb-14">
         <Container>
-          <div className="flex flex-wrap items-center gap-2 md:gap-3">
+          <div role="group" aria-label="Filter products by category" className="flex flex-wrap items-center gap-2 md:gap-3">
             {CATEGORIES.map((cat) => {
               const isActive = cat === active;
               const count = countFor(cat);
@@ -50,7 +50,7 @@ export function ProductsFilterableGrid() {
                   key={cat}
                   type="button"
                   onClick={() => setActive(cat)}
-                  data-cursor="link"
+
                   aria-pressed={isActive}
                   className={cn(
                     "group inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs uppercase tracking-[0.18em] transition-colors md:text-[11px]",

@@ -98,7 +98,7 @@ export function ProductsPreview() {
             <p className="serif max-w-md text-[clamp(20px,2vw,28px)] font-light italic leading-snug text-bone/80">
               Four shown. Four more waiting — including custom-engineered builds.
             </p>
-            <MagneticButton href="/products" variant="primary" data-cursor="link">
+            <MagneticButton href="/products" variant="primary">
               View all 8 products
               <ArrowRight size={16} />
             </MagneticButton>

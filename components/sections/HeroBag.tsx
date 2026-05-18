@@ -413,7 +413,8 @@ export function HeroBag() {
                       src={s.src}
                       alt=""
                       fill
-                      priority
+                      priority={i === 0}
+                      loading={i === 0 ? "eager" : "lazy"}
                       sizes="(max-width: 768px) 80vw, 50vw"
                       className="object-contain"
                       style={{ filter: "contrast(1.04) saturate(1.08)" }}

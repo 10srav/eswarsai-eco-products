@@ -5,7 +5,7 @@ const SITE = company.url;
 
 export const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": ["LocalBusiness", "Organization", "Manufacturer"],
   "@id": `${SITE}#business`,
   name: company.legalName,
   alternateName: company.name,
@@ -26,7 +26,7 @@ export const localBusinessSchema = {
   geo: { "@type": "GeoCoordinates", latitude: 16.9891, longitude: 82.2475 },
   areaServed: ["IN", "Andhra Pradesh", "Telangana", "Karnataka", "Tamil Nadu", "Maharashtra"],
   hasMap: company.socials.googleMaps,
-  image: `${SITE}/og.png`,
+  image: `${SITE}/opengraph-image`,
   logo: `${SITE}/favicon.svg`,
   sameAs: [company.socials.googleMaps],
 };
@@ -70,14 +70,6 @@ export function productSchema(p: Product) {
     brand: { "@type": "Brand", name: company.name },
     category: p.category,
     sku: p.slug,
-    offers: {
-      "@type": "AggregateOffer",
-      priceCurrency: "INR",
-      lowPrice: "1",
-      offerCount: "1",
-      availability: "https://schema.org/InStock",
-      seller: { "@id": `${SITE}#business` },
-    },
   };
 }
 

@@ -50,6 +50,7 @@ export function Counter({
 }: Props) {
   const numRef = useRef<HTMLSpanElement>(null);
   const wrapRef = useRef<HTMLSpanElement>(null);
+  const tweenRef = useRef<gsap.core.Tween | null>(null);
   const finalLabel = prefix + formatNum(value, decimals, format);
 
   useEffect(() => {
@@ -68,7 +69,7 @@ export function Counter({
       if (started) return;
       started = true;
       numEl.textContent = prefix + formatNum(0, decimals, format);
-      gsap.to(obj, {
+      tweenRef.current = gsap.to(obj, {
         v: value,
         duration,
         ease: "expo.out",
@@ -88,7 +89,11 @@ export function Counter({
       },
     });
 
-    return () => trigger.kill();
+    return () => {
+      tweenRef.current?.kill();
+      tweenRef.current = null;
+      trigger.kill();
+    };
   }, [value, prefix, decimals, duration, format, finalLabel]);
 
   return (

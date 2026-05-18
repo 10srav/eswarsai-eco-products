@@ -92,24 +92,24 @@ export default async function ProductDetailPage({ params }: { params: Promise<Pa
         <Container>
           <div className="grid gap-16 md:grid-cols-3 md:gap-12">
             <div>
-              <p className="eyebrow text-moss">Specs</p>
+              <h2 className="eyebrow text-moss">Specs</h2>
               <p className="serif mt-4 text-[clamp(28px,3vw,40px)] font-light leading-tight tracking-tight text-forest-deep">
                 {product.spec}
               </p>
             </div>
             <div>
-              <p className="eyebrow text-moss">Features</p>
+              <h2 className="eyebrow text-moss">Features</h2>
               <ul className="mt-5 grid gap-3 text-sm">
                 {product.features.map((f) => (
                   <li key={f} className="flex items-start gap-2.5">
-                    <Check size={16} className="mt-0.5 shrink-0 text-leaf" />
+                    <Check size={16} className="mt-0.5 shrink-0 text-leaf" aria-hidden="true" />
                     {f}
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <p className="eyebrow text-moss">Best for</p>
+              <h2 className="eyebrow text-moss">Best for</h2>
               <ul className="mt-5 grid gap-3 text-sm">
                 {product.applications.map((a) => (
                   <li key={a} className="flex items-start gap-2.5">
@@ -126,9 +126,9 @@ export default async function ProductDetailPage({ params }: { params: Promise<Pa
       <section className="bg-forest-deep py-20 text-bone md:py-28">
         <Container>
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <p className="eyebrow text-sage">More from this range</p>
+            <h2 className="eyebrow text-sage">More from this range</h2>
             <Link href="/products" className="inline-flex items-center gap-2 text-sm opacity-80 hover:opacity-100">
-              All products <ArrowUpRight size={14} />
+              All products <ArrowUpRight size={14} aria-hidden="true" />
             </Link>
           </div>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 [&>*]:!w-full">

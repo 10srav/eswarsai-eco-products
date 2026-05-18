@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Container } from "@/components/Container";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata = { title: "Page not found" };
+export const metadata = buildMetadata({ title: "Page not found", noindex: true });
 
 export default function NotFound() {
   return (

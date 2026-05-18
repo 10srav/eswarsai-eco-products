@@ -38,10 +38,11 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
     const t2 = setTimeout(() => ScrollTrigger.refresh(), 1000);
     const onLoad = () => ScrollTrigger.refresh();
     window.addEventListener("load", onLoad);
-    let fontsCleanup: (() => void) | undefined;
+    let fontsAborted = false;
     if (document.fonts) {
-      const ready = document.fonts.ready;
-      ready.then(() => ScrollTrigger.refresh());
+      document.fonts.ready.then(() => {
+        if (!fontsAborted) ScrollTrigger.refresh();
+      });
     }
 
     return () => {
@@ -49,7 +50,7 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
       clearTimeout(t1);
       clearTimeout(t2);
       window.removeEventListener("load", onLoad);
-      fontsCleanup?.();
+      fontsAborted = true;
       gsap.ticker.remove(tickerFn);
       lenis.off("scroll", onScroll);
       lenis.destroy();

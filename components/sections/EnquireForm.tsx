@@ -1,28 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { ArrowRight, Loader2 } from "lucide-react";
 import { Container } from "@/components/Container";
 import { SplitText } from "@/components/ui/SplitText";
 import { Toast, type ToastState } from "@/components/ui/Toast";
 import { company } from "@/lib/company";
 import { products } from "@/lib/products";
+import { enquireSchema, type EnquireInput } from "@/lib/enquire-schema";
 import { cn } from "@/lib/utils";
-
-const schema = z.object({
-  name: z.string().min(2, "Please enter your name"),
-  phone: z.string().regex(/^[+0-9\s\-()]{7,}$/i, "Enter a valid phone number"),
-  business: z.string().optional(),
-  requirement: z.string().min(1, "Please choose a product"),
-  quantity: z.string().optional(),
-  time: z.string().optional(),
-  notes: z.string().optional(),
-});
-
-type FormValues = z.infer<typeof schema>;
 
 const requirementOptions = [
   ...products.map((p) => p.name),
@@ -32,22 +20,44 @@ const requirementOptions = [
 export function EnquireForm() {
   const [toast, setToast] = useState<ToastState>(null);
   const [submitting, setSubmitting] = useState(false);
+  const successRef = useRef<HTMLDivElement>(null);
+  const [successMessage, setSuccessMessage] = useState("");
+
+  const nameId = useId();
+  const phoneId = useId();
+  const businessId = useId();
+  const requirementId = useId();
+  const quantityId = useId();
+  const timeId = useId();
+  const notesId = useId();
 
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<FormValues>({ resolver: zodResolver(schema) });
+  } = useForm<EnquireInput>({ resolver: zodResolver(enquireSchema) });
 
-  const onSubmit = async (data: FormValues) => {
+  const onSubmit = async (data: EnquireInput) => {
     setSubmitting(true);
     try {
-      await fetch("/api/enquire", {
+      const res = await fetch("/api/enquire", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(data),
-      }).catch(() => null);
+      });
+
+      if (!res.ok) {
+        const message =
+          res.status === 422
+            ? "Please check the form and try again."
+            : res.status === 429
+              ? "Too many requests. Please try again in a minute."
+              : "Something went wrong. Please WhatsApp us directly.";
+        setToast({ tone: "error", message });
+        setTimeout(() => setToast(null), 4000);
+        return;
+      }
 
       const text = `Hello ${company.name}, I'd like to enquire about eco-friendly bags.
 
@@ -59,14 +69,19 @@ Quantity: ${data.quantity || "—"}
 Preferred Time: ${data.time || "—"}${data.notes ? `\nNotes: ${data.notes}` : ""}`;
 
       const url = `https://wa.me/${company.whatsappNumber}?text=${encodeURIComponent(text)}`;
-      setToast({ tone: "success", message: "Opening WhatsApp…" });
+      const successText = "Enquiry sent. Opening WhatsApp…";
+      setToast({ tone: "success", message: successText });
+      setSuccessMessage(successText);
+      // Announce success to assistive tech before navigating away.
+      successRef.current?.focus();
       setTimeout(() => {
         setToast(null);
         reset();
+        setSuccessMessage("");
         window.open(url, "_blank", "noopener,noreferrer");
       }, 700);
     } catch {
-      setToast({ tone: "error", message: "Something went wrong. Please WhatsApp us directly." });
+      setToast({ tone: "error", message: "Network error. Please WhatsApp us directly." });
       setTimeout(() => setToast(null), 4000);
     } finally {
       setSubmitting(false);
@@ -99,16 +114,23 @@ Preferred Time: ${data.time || "—"}${data.notes ? `\nNotes: ${data.notes}` : "
 
             <ul className="mt-10 flex flex-col">
               {[
-                { lbl: "Call", value: company.phone, href: `tel:${company.phoneE164}` },
-                { lbl: "Email", value: company.email, href: `mailto:${company.email}` },
-                { lbl: "Visit", value: `${company.address.line2}, ${company.address.locality} ${company.address.postal}`, href: company.socials.googleMaps },
-                { lbl: "Hours", value: company.hours, href: "#" },
+                { lbl: "Call", value: company.phone, href: `tel:${company.phoneE164}`, external: false },
+                { lbl: "Email", value: company.email, href: `mailto:${company.email}`, external: false },
+                { lbl: "Visit", value: `${company.address.line2}, ${company.address.locality} ${company.address.postal}`, href: company.socials.googleMaps, external: true },
+                { lbl: "Hours", value: company.hours, href: null, external: false },
               ].map((row, i) => (
                 <li key={row.lbl} className={cn("border-bone/15 py-3.5 transition-all hover:pl-2", i === 0 ? "border-t border-b" : "border-b")}>
-                  <a href={row.href} className="flex flex-wrap items-center gap-3 text-sm" target={row.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">
-                    <span className="eyebrow min-w-[80px] opacity-50">{row.lbl}</span>
-                    <span>{row.value}</span>
-                  </a>
+                  {row.href ? (
+                    <a href={row.href} className="flex flex-wrap items-center gap-3 text-sm" target={row.external ? "_blank" : undefined} rel={row.external ? "noopener noreferrer" : undefined}>
+                      <span className="eyebrow min-w-[80px] opacity-50">{row.lbl}</span>
+                      <span>{row.value}{row.external ? <span className="sr-only"> (opens in new tab)</span> : null}</span>
+                    </a>
+                  ) : (
+                    <div className="flex flex-wrap items-center gap-3 text-sm">
+                      <span className="eyebrow min-w-[80px] opacity-50">{row.lbl}</span>
+                      <span>{row.value}</span>
+                    </div>
+                  )}
                 </li>
               ))}
             </ul>
@@ -120,37 +142,69 @@ Preferred Time: ${data.time || "—"}${data.notes ? `\nNotes: ${data.notes}` : "
             className="rounded-lg border border-bone/15 bg-bone/[0.04] p-8 backdrop-blur-md md:p-12"
           >
             <div className="grid gap-5 sm:grid-cols-2">
-              <Field label="Your name *" error={errors.name?.message}>
+              <Field id={nameId} label="Your name" required error={errors.name?.message}>
                 <input
+                  id={nameId}
                   type="text"
                   placeholder="Full name"
+                  required
+                  aria-required="true"
+                  aria-invalid={errors.name ? "true" : undefined}
+                  aria-describedby={errors.name ? `${nameId}-err` : undefined}
                   {...register("name")}
                   className={inputCls(errors.name)}
                 />
               </Field>
-              <Field label="Phone *" error={errors.phone?.message}>
+              <Field id={phoneId} label="Phone" required error={errors.phone?.message}>
                 <input
+                  id={phoneId}
                   type="tel"
                   placeholder="+91 91210 53678"
                   inputMode="tel"
                   autoComplete="tel"
+                  required
+                  aria-required="true"
+                  aria-invalid={errors.phone ? "true" : undefined}
+                  aria-describedby={errors.phone ? `${phoneId}-err` : undefined}
                   {...register("phone")}
                   className={inputCls(errors.phone)}
                 />
               </Field>
             </div>
 
-            <Field label="Business / Brand" error={errors.business?.message} className="mt-5">
+            <Field
+              id={businessId}
+              label="Business / Brand"
+              error={errors.business?.message}
+              className="mt-5"
+            >
               <input
+                id={businessId}
                 type="text"
                 placeholder="Company name (optional)"
+                aria-invalid={errors.business ? "true" : undefined}
+                aria-describedby={errors.business ? `${businessId}-err` : undefined}
                 {...register("business")}
                 className={inputCls(errors.business)}
               />
             </Field>
 
-            <Field label="Requirement *" error={errors.requirement?.message} className="mt-5">
-              <select {...register("requirement")} className={cn(inputCls(errors.requirement), "appearance-none bg-[url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%2395d5b2%22%3E%3Cpath%20d%3D%22M7%2010l5%205%205-5%22%2F%3E%3C%2Fsvg%3E')] bg-[length:18px] bg-[right_0_center] bg-no-repeat pr-7")}>
+            <Field
+              id={requirementId}
+              label="Requirement"
+              required
+              error={errors.requirement?.message}
+              className="mt-5"
+            >
+              <select
+                id={requirementId}
+                required
+                aria-required="true"
+                aria-invalid={errors.requirement ? "true" : undefined}
+                aria-describedby={errors.requirement ? `${requirementId}-err` : undefined}
+                {...register("requirement")}
+                className={cn(inputCls(errors.requirement), "appearance-none bg-[url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%2395d5b2%22%3E%3Cpath%20d%3D%22M7%2010l5%205%205-5%22%2F%3E%3C%2Fsvg%3E')] bg-[length:18px] bg-[right_0_center] bg-no-repeat pr-7")}
+              >
                 <option value="">Select a product</option>
                 {requirementOptions.map((opt) => (
                   <option key={opt} value={opt}>{opt}</option>
@@ -159,16 +213,21 @@ Preferred Time: ${data.time || "—"}${data.notes ? `\nNotes: ${data.notes}` : "
             </Field>
 
             <div className="mt-5 grid gap-5 sm:grid-cols-2">
-              <Field label="Quantity">
+              <Field id={quantityId} label="Quantity">
                 <input
+                  id={quantityId}
                   type="text"
                   placeholder="e.g. 5,000 pcs"
                   {...register("quantity")}
                   className={inputCls()}
                 />
               </Field>
-              <Field label="Preferred callback">
-                <select {...register("time")} className={cn(inputCls(), "appearance-none bg-[url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%2395d5b2%22%3E%3Cpath%20d%3D%22M7%2010l5%205%205-5%22%2F%3E%3C%2Fsvg%3E')] bg-[length:18px] bg-[right_0_center] bg-no-repeat pr-7")}>
+              <Field id={timeId} label="Preferred callback">
+                <select
+                  id={timeId}
+                  {...register("time")}
+                  className={cn(inputCls(), "appearance-none bg-[url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%2395d5b2%22%3E%3Cpath%20d%3D%22M7%2010l5%205%205-5%22%2F%3E%3C%2Fsvg%3E')] bg-[length:18px] bg-[right_0_center] bg-no-repeat pr-7")}
+                >
                   <option value="">Anytime</option>
                   <option>Morning (9 – 12)</option>
                   <option>Afternoon (12 – 16)</option>
@@ -177,8 +236,9 @@ Preferred Time: ${data.time || "—"}${data.notes ? `\nNotes: ${data.notes}` : "
               </Field>
             </div>
 
-            <Field label="Notes (optional)" className="mt-5">
+            <Field id={notesId} label="Notes (optional)" className="mt-5">
               <textarea
+                id={notesId}
                 rows={3}
                 placeholder="Print colour count, size, GSM…"
                 {...register("notes")}
@@ -189,11 +249,22 @@ Preferred Time: ${data.time || "—"}${data.notes ? `\nNotes: ${data.notes}` : "
             <button
               type="submit"
               disabled={submitting}
+              aria-busy={submitting}
               className="mt-8 flex w-full items-center justify-center gap-3 rounded-md bg-leaf py-5 text-sm font-medium tracking-wide text-forest-deep transition-colors hover:bg-sage disabled:opacity-60"
             >
               {submitting ? <Loader2 size={16} className="animate-spin" /> : <ArrowRight size={16} />}
               {submitting ? "Sending…" : "Send via WhatsApp"}
             </button>
+
+            <div
+              ref={successRef}
+              tabIndex={-1}
+              role="status"
+              aria-live="polite"
+              className="sr-only"
+            >
+              {successMessage}
+            </div>
 
             <p className="mt-4 text-center text-[11px] uppercase tracking-[0.2em] opacity-50">
               We never spam · Your data stays with us
@@ -208,28 +279,50 @@ Preferred Time: ${data.time || "—"}${data.notes ? `\nNotes: ${data.notes}` : "
 }
 
 function Field({
+  id,
   label,
   error,
+  required,
   className,
   children,
 }: {
+  id: string;
   label: string;
   error?: string;
+  required?: boolean;
   className?: string;
   children: React.ReactNode;
 }) {
   return (
-    <label className={cn("flex flex-col", className)}>
-      <span className="eyebrow mb-2.5 opacity-60">{label}</span>
-      {children}
-      {error && <span className="mt-1.5 text-[11px] text-flame">{error}</span>}
-    </label>
+    <div className={cn("flex flex-col", className)}>
+      <label htmlFor={id} className="eyebrow mb-2.5 flex items-center gap-1.5 opacity-60">
+        <span>{label}</span>
+        {required ? (
+          <span aria-hidden="true" className="text-leaf">*</span>
+        ) : null}
+      </label>
+      <div className="relative">
+        {children}
+        <span
+          aria-hidden="true"
+          className={cn(
+            "pointer-events-none absolute bottom-0 left-0 h-px w-full origin-left scale-x-0 transition-transform duration-[320ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] peer-focus:scale-x-100",
+            error ? "scale-x-100 bg-flame" : "bg-leaf",
+          )}
+        />
+      </div>
+      {error && (
+        <p id={`${id}-err`} role="alert" className="mt-1.5 text-[11px] text-flame">
+          {error}
+        </p>
+      )}
+    </div>
   );
 }
 
 function inputCls(error?: { message?: string }) {
   return cn(
-    "w-full bg-transparent border-0 border-b border-bone/25 py-2.5 text-base outline-none transition-colors placeholder:text-bone/35 focus:border-leaf",
-    error?.message && "border-flame focus:border-flame",
+    "peer w-full bg-transparent border-0 border-b border-bone/25 py-2.5 text-base outline-none transition-colors placeholder:text-bone/70 focus:border-bone/40",
+    error?.message && "border-flame/60",
   );
 }

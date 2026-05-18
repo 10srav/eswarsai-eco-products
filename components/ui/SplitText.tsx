@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type ElementType, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
@@ -12,8 +12,10 @@ function ensureRegistered() {
   registered = true;
 }
 
+type SplitTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "div";
+
 type Props = {
-  as?: ElementType;
+  as?: SplitTag;
   className?: string;
   children: ReactNode;
   delay?: number;
@@ -91,7 +93,7 @@ export function SplitText({
   }, [delay, stagger, start, triggerOnView]);
 
   return (
-    <Tag ref={ref as never} className={cn(className)}>
+    <Tag ref={ref as unknown as React.Ref<HTMLHeadingElement>} className={cn(className)}>
       {children}
     </Tag>
   );

@@ -16,7 +16,10 @@ _legacy/
 hero-*.png
 full-*.png
 gallery-*.png
+gallery-*.jpg
+gallery-*.jpeg
 products-*.png
 home-*.png
 test-*.png
 *.test.png
+*.screenshot.png

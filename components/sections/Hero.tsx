@@ -49,7 +49,12 @@ export function Hero() {
   const titleGroupRef = useRef<HTMLDivElement>(null);
   const [status, setStatus] = useState<Status | null>(null);
   const [activeWord, setActiveWord] = useState(0);
+  const [mounted, setMounted] = useState(false);
   const [reduced, setReduced] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     setStatus(nowIST());
@@ -142,8 +147,9 @@ export function Hero() {
   }, [reduced]);
 
   return (
-    <header
+    <section
       ref={heroRef}
+      aria-label="Home hero"
       className="relative isolate flex min-h-screen flex-col justify-between overflow-hidden bg-gradient-to-b from-forest-deep via-forest to-moss px-6 pb-10 pt-24 text-bone md:px-10 md:pt-28"
     >
       <div
@@ -177,7 +183,7 @@ export function Hero() {
           <span aria-hidden="true">·</span>
           <span>Kakinada · Andhra Pradesh</span>
           <span aria-hidden="true">·</span>
-          <span>29°C</span>
+          <span>EST. 2013 · 28 STATES</span>
         </div>
 
         <div ref={titleGroupRef} className="relative z-10 mt-10 max-w-[60%]">
@@ -194,10 +200,7 @@ export function Hero() {
                 Replace plastic.
               </span>
             </span>
-            <span
-              className="relative mt-1 block overflow-hidden italic text-sage"
-              aria-live="polite"
-            >
+            <span className="relative mt-1 block overflow-hidden italic text-sage">
               <span className="hero-line-2 block will-change-transform">
                 <span className="relative inline-block align-top">
                   <span
@@ -206,23 +209,17 @@ export function Hero() {
                   >
                     {LONGEST_WORD}
                   </span>
-                  {ROTATING_WORDS.map((w, i) => {
-                    const isActive = i === activeWord;
-                    return (
-                      <span
-                        key={w}
-                        aria-hidden={!isActive}
-                        className={cn(
-                          "absolute left-0 top-0 block whitespace-nowrap transition-[clip-path,opacity] duration-700 ease-[cubic-bezier(0.7,0,0.3,1)]",
-                          isActive
-                            ? "opacity-100 [clip-path:inset(0_0_0_0)]"
-                            : "opacity-0 [clip-path:inset(0_100%_0_0)]",
-                        )}
-                      >
-                        {w}
-                      </span>
-                    );
-                  })}
+                  <span
+                    key={mounted ? activeWord : "ssr"}
+                    className={cn(
+                      "absolute left-0 top-0 block whitespace-nowrap",
+                      mounted && !reduced
+                        ? "animate-word-in [clip-path:inset(0_0_0_0)] opacity-100"
+                        : "opacity-100 [clip-path:inset(0_0_0_0)]",
+                    )}
+                  >
+                    {ROTATING_WORDS[mounted ? activeWord : 0]}
+                  </span>
                 </span>
               </span>
             </span>
@@ -241,7 +238,7 @@ export function Hero() {
           </p>
           <div className="flex flex-wrap items-center gap-4">
             <span className="hero-cta">
-              <MagneticButton href="/contact" variant="primary" data-cursor="link">
+              <MagneticButton href="/contact" variant="primary">
                 Request samples
                 <ArrowRight size={16} />
               </MagneticButton>
@@ -249,7 +246,7 @@ export function Hero() {
             <span className="hero-cta">
               <Link
                 href="/products"
-                data-cursor="link"
+
                 className="group relative inline-flex items-center gap-2 px-1 py-2 text-sm font-medium tracking-wide text-bone"
               >
                 <span className="relative">
@@ -292,6 +289,6 @@ export function Hero() {
           <span className="block h-10 w-px origin-top animate-drop bg-current" />
         </div>
       </div>
-    </header>
+    </section>
   );
 }
