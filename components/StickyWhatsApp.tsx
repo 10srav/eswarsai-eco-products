@@ -12,7 +12,7 @@ export function StickyWhatsApp() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
-      className="group fixed bottom-5 right-5 z-80 flex items-center gap-0 overflow-hidden rounded-full bg-[#075E54] text-white shadow-[0_8px_28px_-6px_rgba(7,94,84,0.55)] transition-[gap,padding,box-shadow] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] hover:shadow-[0_12px_36px_-4px_rgba(7,94,84,0.65)] hover:gap-2 hover:pr-5 md:bottom-6 md:right-6"
+      className="group fixed bottom-5 right-5 z-[101] flex items-center gap-0 overflow-hidden rounded-full bg-[#075E54] text-white shadow-[0_8px_28px_-6px_rgba(7,94,84,0.55)] transition-[gap,padding,box-shadow] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] hover:shadow-[0_12px_36px_-4px_rgba(7,94,84,0.65)] hover:gap-2 hover:pr-5 md:bottom-6 md:right-6"
     >
       <span
         aria-hidden="true"

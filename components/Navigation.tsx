@@ -78,11 +78,12 @@ export function Navigation() {
       <nav
         aria-label="Primary"
         className={cn(
-          "fixed inset-x-0 top-0 z-[90] flex items-center justify-between px-6 transition-[padding,backdrop-filter] duration-500 md:px-10",
-          scrolled ? "py-3 md:py-3.5" : "py-4 md:py-5",
+          "fixed inset-x-0 top-0 z-[90] flex items-center justify-between px-6 transition-[padding,background-color,backdrop-filter] duration-500 md:px-10",
+          scrolled
+            ? "border-b border-bone/10 bg-forest-deep/85 py-3 backdrop-blur-md md:py-3.5"
+            : "py-4 md:py-5",
           "text-cream",
         )}
-        style={{ mixBlendMode: "difference" }}
       >
         <Link
           href="/"
@@ -129,7 +130,7 @@ export function Navigation() {
         <div className="flex items-center gap-3">
           <Link
             href="/contact"
-            className="hidden items-center gap-2 rounded-full border border-current px-4 py-2 text-xs sm:inline-flex"
+            className="hidden min-h-[44px] items-center gap-2 rounded-full border border-current px-4 py-2 text-xs sm:inline-flex"
           >
             <span className="h-1.5 w-1.5 animate-[pulse-soft_2s_infinite] rounded-full bg-leaf" />
             Get a quote
@@ -138,7 +139,7 @@ export function Navigation() {
             ref={toggleRef}
             type="button"
             onClick={() => setOpen((s) => !s)}
-            className="rounded-full border border-current p-2.5 md:hidden"
+            className="grid min-h-[44px] min-w-[44px] place-items-center rounded-full border border-current p-2.5 md:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-nav-dialog"

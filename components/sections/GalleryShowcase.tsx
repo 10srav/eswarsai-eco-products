@@ -98,8 +98,8 @@ export function GalleryShowcase() {
             </SplitText>
           </div>
           <p className="max-w-md text-sm leading-relaxed text-forest-deep/70 md:text-right">
-            Cooperative banks, weddings, hospitals, boutiques — every print run that left our line.
-            Photographed on the floor, before despatch.
+            No stock photos, no mock-ups. Each tile is one batch as it looked the morning it shipped,
+            shot under the same lights it was printed under.
           </p>
         </div>
 

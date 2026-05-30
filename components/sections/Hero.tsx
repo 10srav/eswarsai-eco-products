@@ -186,7 +186,7 @@ export function Hero() {
           <span>EST. 2013 · 28 STATES</span>
         </div>
 
-        <div ref={titleGroupRef} className="relative z-10 mt-10 max-w-[60%]">
+        <div ref={titleGroupRef} className="relative z-10 mt-10 max-w-full md:max-w-[60%]">
           <h1
             className="serif font-light"
             style={{
@@ -214,7 +214,7 @@ export function Hero() {
                     className={cn(
                       "absolute left-0 top-0 block whitespace-nowrap",
                       mounted && !reduced
-                        ? "animate-word-in [clip-path:inset(0_0_0_0)] opacity-100"
+                        ? "animate-word-in opacity-100"
                         : "opacity-100 [clip-path:inset(0_0_0_0)]",
                     )}
                   >

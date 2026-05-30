@@ -80,7 +80,7 @@ export function Footer() {
           <ul className="mt-5 flex flex-col gap-2 text-sm">
             {productLinks.map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className="inline-flex min-h-[24px] items-center opacity-85 transition-all hover:translate-x-1 hover:text-sage hover:opacity-100">
+                <Link href={l.href} className="inline-flex min-h-[44px] items-center opacity-85 transition-transform hover:translate-x-1 hover:text-sage hover:opacity-100">
                   {l.label}
                 </Link>
               </li>
@@ -93,7 +93,7 @@ export function Footer() {
           <ul className="mt-5 flex flex-col gap-2 text-sm">
             {companyLinks.map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className="inline-flex min-h-[24px] items-center opacity-85 transition-all hover:translate-x-1 hover:text-sage hover:opacity-100">
+                <Link href={l.href} className="inline-flex min-h-[44px] items-center opacity-85 transition-transform hover:translate-x-1 hover:text-sage hover:opacity-100">
                   {l.label}
                 </Link>
               </li>
@@ -104,15 +104,15 @@ export function Footer() {
         <div>
           <h3 className="eyebrow opacity-50">Reach</h3>
           <ul className="mt-5 flex flex-col gap-2 text-sm">
-            <li><a href={`tel:${company.phoneE164}`} className="inline-flex min-h-[24px] items-center opacity-85 hover:text-sage hover:opacity-100">{company.phone}</a></li>
-            <li><a href={`mailto:${company.email}`} className="inline-flex min-h-[24px] items-center opacity-85 hover:text-sage hover:opacity-100">hello@eswar…</a></li>
-            <li><a href={`https://wa.me/${company.whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[24px] items-center opacity-85 hover:text-sage hover:opacity-100">WhatsApp <span className="sr-only">(opens in new tab)</span></a></li>
-            <li><a href={company.socials.googleMaps} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[24px] items-center opacity-85 hover:text-sage hover:opacity-100">{company.address.locality}, AP <span className="sr-only">(opens in new tab)</span></a></li>
+            <li><a href={`tel:${company.phoneE164}`} className="inline-flex min-h-[44px] items-center opacity-85 hover:text-sage hover:opacity-100">{company.phone}</a></li>
+            <li><a href={`mailto:${company.email}`} className="inline-flex min-h-[44px] items-center opacity-85 hover:text-sage hover:opacity-100">{company.email}</a></li>
+            <li><a href={`https://wa.me/${company.whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[44px] items-center opacity-85 hover:text-sage hover:opacity-100">WhatsApp <span className="sr-only">(opens in new tab)</span></a></li>
+            <li><a href={company.socials.googleMaps} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[44px] items-center opacity-85 hover:text-sage hover:opacity-100">{company.address.locality}, AP <span className="sr-only">(opens in new tab)</span></a></li>
           </ul>
         </div>
       </div>
 
-      <div className="mt-14 flex flex-wrap items-center justify-between gap-3 border-t border-cream/10 pt-6 text-xs opacity-50">
+      <div className="mt-14 flex flex-wrap items-center justify-between gap-3 border-t border-cream/10 pt-6 text-xs text-bone/75">
         <span>© 2026 {company.legalName} · All rights reserved</span>
         <span>Made with care, in {company.address.region}.</span>
       </div>

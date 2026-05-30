@@ -19,7 +19,7 @@ export function ImpactCounters() {
             </p>
             <SplitText
               as="h2"
-              className="serif mt-8 text-[clamp(40px,7vw,96px)] font-light leading-[0.95] tracking-[-0.04em]"
+              className="serif mt-8 text-[clamp(36px,6vw,84px)] font-light leading-[0.95] tracking-[-0.04em]"
             >
               Numbers we measure, so the planet doesn&apos;t have to.
             </SplitText>

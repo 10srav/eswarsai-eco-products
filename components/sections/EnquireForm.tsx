@@ -100,13 +100,13 @@ Preferred Time: ${data.time || "—"}${data.notes ? `\nNotes: ${data.notes}` : "
           <div>
             <div className="eyebrow flex items-center gap-3 text-sage">
               <span className="h-px w-6 bg-current" />
-              Let&apos;s talk
+              Your details
             </div>
             <SplitText
               as="h2"
               className="serif mt-8 text-[clamp(40px,5vw,76px)] font-light leading-[1.0] tracking-[-0.03em]"
             >
-              Send us your brief on WhatsApp.
+              Start your sample request.
             </SplitText>
             <p className="mt-6 max-w-md text-base leading-relaxed opacity-75">
               Fill the form — we&apos;ll prefill a WhatsApp message you can review and send. We typically respond within 30 minutes during business hours.
@@ -119,7 +119,7 @@ Preferred Time: ${data.time || "—"}${data.notes ? `\nNotes: ${data.notes}` : "
                 { lbl: "Visit", value: `${company.address.line2}, ${company.address.locality} ${company.address.postal}`, href: company.socials.googleMaps, external: true },
                 { lbl: "Hours", value: company.hours, href: null, external: false },
               ].map((row, i) => (
-                <li key={row.lbl} className={cn("border-bone/15 py-3.5 transition-all hover:pl-2", i === 0 ? "border-t border-b" : "border-b")}>
+                <li key={row.lbl} className={cn("border-bone/15 py-3.5 transition-transform hover:translate-x-1", i === 0 ? "border-t border-b" : "border-b")}>
                   {row.href ? (
                     <a href={row.href} className="flex flex-wrap items-center gap-3 text-sm" target={row.external ? "_blank" : undefined} rel={row.external ? "noopener noreferrer" : undefined}>
                       <span className="eyebrow min-w-[80px] opacity-50">{row.lbl}</span>
@@ -147,6 +147,7 @@ Preferred Time: ${data.time || "—"}${data.notes ? `\nNotes: ${data.notes}` : "
                   id={nameId}
                   type="text"
                   placeholder="Full name"
+                  autoComplete="name"
                   required
                   aria-required="true"
                   aria-invalid={errors.name ? "true" : undefined}
@@ -182,6 +183,7 @@ Preferred Time: ${data.time || "—"}${data.notes ? `\nNotes: ${data.notes}` : "
                 id={businessId}
                 type="text"
                 placeholder="Company name (optional)"
+                autoComplete="organization"
                 aria-invalid={errors.business ? "true" : undefined}
                 aria-describedby={errors.business ? `${businessId}-err` : undefined}
                 {...register("business")}
@@ -312,7 +314,7 @@ function Field({
         />
       </div>
       {error && (
-        <p id={`${id}-err`} role="alert" className="mt-1.5 text-[11px] text-flame">
+        <p id={`${id}-err`} role="alert" className="mt-1.5 text-sm text-[#ff9b80]">
           {error}
         </p>
       )}

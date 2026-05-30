@@ -1,3 +1,6 @@
+const FOUNDED = 2013;
+const yearsInBusiness = new Date().getFullYear() - FOUNDED;
+
 export const company = {
   name: "Eswar Sai Eco Products",
   legalName: "Eswarsai Eco Products",
@@ -6,7 +9,7 @@ export const company = {
     "Premium non-woven and jute bag manufacturer in Andhra Pradesh. Sustainable, custom-printed eco-friendly bags for businesses that care about the planet.",
   longDescription:
     "We are pioneers in manufacturing eco-friendly non-woven and jute bags, dedicated to providing customized and durable solutions that cater to your unique packaging needs while supporting environmental sustainability.",
-  founded: 2013,
+  founded: FOUNDED,
   url: "https://eswarsaiecoproducts.com",
   phone: "+91 91210 53678",
   phoneE164: "+919121053678",
@@ -27,7 +30,7 @@ export const company = {
     googleMaps: "https://share.google/LaAX1XAzkS1pOvkae",
   },
   stats: [
-    { value: 12, suffix: "yrs", label: "In manufacturing" },
+    { value: yearsInBusiness, suffix: "yrs", label: "In manufacturing" },
     { value: 500, suffix: "+", label: "Brand partners" },
     { value: 40, suffix: "M+", label: "Bags produced" },
     { value: 100, suffix: "%", label: "Reusable & recyclable" },

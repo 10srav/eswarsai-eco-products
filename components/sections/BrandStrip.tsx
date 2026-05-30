@@ -33,10 +33,9 @@ export function BrandStrip() {
                   i % 3 === 1
                     ? "serif text-[clamp(16px,1.6vw,22px)] italic font-light tracking-tight text-forest-deep/80"
                     : i % 3 === 2
-                    ? "serif outline-stroke text-[clamp(16px,1.6vw,22px)] font-light tracking-tight"
+                    ? "serif text-[clamp(16px,1.6vw,22px)] font-light tracking-tight text-moss"
                     : "serif text-[clamp(16px,1.6vw,22px)] font-light tracking-tight text-forest-deep/55"
                 }
-                style={{ color: i % 3 === 2 ? "var(--color-forest-deep)" : undefined }}
               >
                 {brand}
               </li>

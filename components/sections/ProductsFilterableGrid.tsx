@@ -53,7 +53,7 @@ export function ProductsFilterableGrid() {
 
                   aria-pressed={isActive}
                   className={cn(
-                    "group inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs uppercase tracking-[0.18em] transition-colors md:text-[11px]",
+                    "group inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-3 text-xs uppercase tracking-[0.18em] transition-colors md:text-[11px]",
                     isActive
                       ? "border-leaf bg-leaf text-forest-deep"
                       : "border-bone/25 text-bone/80 hover:border-bone/55 hover:text-bone",

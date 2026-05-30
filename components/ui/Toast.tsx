@@ -14,7 +14,7 @@ export function Toast({ state }: { state: ToastState }) {
         "fixed bottom-8 left-1/2 z-[110] flex -translate-x-1/2 items-center gap-3 rounded-md border px-5 py-3 text-sm shadow-lg backdrop-blur transition-all duration-500",
         state ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-20 opacity-0",
         state?.tone === "error"
-          ? "border-flame bg-flame/10 text-flame"
+          ? "border-flame bg-flame/10 text-rust"
           : "border-leaf bg-forest-deep/95 text-bone",
       )}
     >

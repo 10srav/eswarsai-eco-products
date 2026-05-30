@@ -42,7 +42,7 @@ export default function AboutPage() {
             <div>
               <p className="eyebrow text-moss">The story</p>
               <p className="serif mt-6 text-[clamp(22px,2.4vw,32px)] font-light leading-[1.25] tracking-tight text-forest-deep">
-                We started with one stitching line and a stubborn belief: India deserves bag manufacturers who care about both <em>quality</em> and the <em>planet</em>. Twelve years later, two production lines, in-house printing, and 500+ brand partners later — we still do.
+                We started with one stitching line and a stubborn belief: India deserves bag manufacturers who care about both <em>quality</em> and the <em>planet</em>. More than a decade on, two production lines, in-house printing, and 500+ brand partners later — we still do.
               </p>
               <ul className="mt-10 grid gap-5 text-sm">
                 <li className="flex justify-between border-b border-forest-deep/10 pb-4">

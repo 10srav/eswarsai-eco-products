@@ -63,7 +63,7 @@ export function SustainabilityManifesto() {
             data-para
             className="serif drop-cap text-[clamp(18px,1.6vw,22px)] font-light leading-[1.6] tracking-tight text-pretty"
           >
-            Twelve years ago, we started with one stitching line in Kakinada and a stubborn belief: India deserves bag manufacturers who care about both the product they ship and the planet they ship it on. The market in 2013 was full of plastic — cheap, single-use, forever-lasting plastic. We knew the math was broken. A five-second carry that lingers for five centuries is not a fair trade. So we set up a non-woven line, then a jute line, and started doing the unglamorous work of replacement: one order, one brand, one bag at a time.
+            Back in 2013, we started with one stitching line in Kakinada and a stubborn belief: India deserves bag manufacturers who care about both the product they ship and the planet they ship it on. The market in 2013 was full of plastic — cheap, single-use, forever-lasting plastic. We knew the math was broken. A five-second carry that lingers for five centuries is not a fair trade. So we set up a non-woven line, then a jute line, and started doing the unglamorous work of replacement: one order, one brand, one bag at a time.
           </p>
           <p
             data-para
@@ -75,7 +75,7 @@ export function SustainabilityManifesto() {
             data-para
             className="serif text-[clamp(17px,1.45vw,20px)] font-light leading-[1.65] tracking-tight text-forest-deep/80 text-pretty"
           >
-            What comes next is harder. Reusable is good; circular is better. We are working with our brand partners to test take-back programs for end-of-life bags — recycle the polypropylene back into fibre, compost the jute into the soil it came from. That work is messy, slow, and unglamorous. But it&apos;s the work that matters. If you&apos;re a brand that wants to replace plastic with intent, we&apos;re building the bag, the supply chain, and the next chapter alongside you. Twelve years in. Still stubborn. Still counting.
+            What comes next is harder. Reusable is good; circular is better. We are working with our brand partners to test take-back programs for end-of-life bags — recycle the polypropylene back into fibre, compost the jute into the soil it came from. That work is messy, slow, and unglamorous. But it&apos;s the work that matters. If you&apos;re a brand that wants to replace plastic with intent, we&apos;re building the bag, the supply chain, and the next chapter alongside you. More than a decade in. Still stubborn. Still counting.
           </p>
         </div>
 

@@ -27,7 +27,7 @@ export default function GalleryPage() {
   return (
     <>
       <PageHero
-        eyebrow="Made for them. Photographed on the floor."
+        eyebrow="Client work"
         title="A gallery of bags we've shipped."
         lede="Cooperative banks, weddings, hospitals, boutiques. Every photo below is a real order from our line — captured before it left the building."
       />
