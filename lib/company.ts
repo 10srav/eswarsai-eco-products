@@ -2,19 +2,19 @@ const FOUNDED = 2013;
 const yearsInBusiness = new Date().getFullYear() - FOUNDED;
 
 export const company = {
-  name: "Eswar Sai Eco Products",
-  legalName: "Eswarsai Eco Products",
+  name: "NextGen Eco Bags",
+  legalName: "NextGen Eco Bags",
   tagline: "Replace plastic. Carry a future worth saving.",
   shortDescription:
     "Premium non-woven and jute bag manufacturer in Andhra Pradesh. Sustainable, custom-printed eco-friendly bags for businesses that care about the planet.",
   longDescription:
     "We are pioneers in manufacturing eco-friendly non-woven and jute bags, dedicated to providing customized and durable solutions that cater to your unique packaging needs while supporting environmental sustainability.",
   founded: FOUNDED,
-  url: "https://eswarsaiecoproducts.com",
+  url: "https://nextgenecobags.com",
   phone: "+91 91210 53678",
   phoneE164: "+919121053678",
   whatsappNumber: "919121053678",
-  email: "hello@eswarsaiecoproducts.com",
+  email: "hello@nextgenecobags.com",
   address: {
     line1: "#10-334, Flat No. 40",
     line2: "APIIC Colony, Rayudupalem, Ramanayyapeta",
@@ -27,7 +27,7 @@ export const company = {
   hours: "Mon–Sat, 9:00 – 18:30 IST",
   hoursMachine: "Mo-Sa 09:00-18:30",
   socials: {
-    googleMaps: "https://share.google/LaAX1XAzkS1pOvkae",
+    googleMaps: "https://maps.app.goo.gl/jGBp7VDVyh1TDHFZ6",
   },
   stats: [
     { value: yearsInBusiness, suffix: "yrs", label: "In manufacturing" },

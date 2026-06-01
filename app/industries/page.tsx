@@ -9,7 +9,7 @@ import { breadcrumbSchema } from "@/lib/schema";
 export const metadata = buildMetadata({
   title: "Industries we serve",
   description:
-    "From kirana counters to listed FMCG, hospitals to wedding stages — Eswar Sai Eco Products manufactures eco-friendly bags for every industry that wants to replace plastic, with MOQ ranges and sample timelines per sector.",
+    "From kirana counters to listed FMCG, hospitals to wedding stages — NextGen Eco Bags manufactures eco-friendly bags for every industry that wants to replace plastic, with MOQ ranges and sample timelines per sector.",
   path: "/industries",
   keywords: [
     "non woven bag manufacturer for retail",

@@ -32,7 +32,7 @@ export default function HomePage() {
       <ImpactCounters />
       <IndustriesPreview />
       <EditorialBreak
-        image="/images/products/eswar-sai-kakinada-manufacturing-line.jpg"
+        image="/images/products/nextgen-eco-bags-kakinada-manufacturing-line.jpg"
         alt="Inside the manufacturing line"
         kicker="Inside the line"
         headline="Two production lines. In-house printing. Schedules we keep."

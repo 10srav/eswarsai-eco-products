@@ -34,7 +34,7 @@ export function CTABanner() {
               <ArrowRight size={16} />
             </MagneticButton>
             <a
-              href={`https://wa.me/${company.whatsappNumber}?text=${encodeURIComponent("Hi Eswar Sai, I'd like to enquire about eco-friendly bags.")}`}
+              href={`https://wa.me/${company.whatsappNumber}?text=${encodeURIComponent("Hi NextGen Eco Bags, I'd like to enquire about eco-friendly bags.")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-full border border-bone/30 px-7 py-4 text-sm transition-colors hover:bg-bone/10"

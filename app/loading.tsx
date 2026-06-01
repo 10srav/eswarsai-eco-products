@@ -41,7 +41,7 @@ export default function Loading() {
         <p className="eyebrow opacity-70">Loading</p>
       </div>
 
-      <span className="sr-only">Loading the Eswar Sai Eco Products page</span>
+      <span className="sr-only">Loading the NextGen Eco Bags page</span>
     </div>
   );
 }

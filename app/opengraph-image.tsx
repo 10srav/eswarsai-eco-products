@@ -40,7 +40,7 @@ export default async function OpenGraphImage() {
             ▲
           </div>
           <span style={{ fontSize: 24, letterSpacing: "-0.02em" }}>
-            Eswar Sai <span style={{ opacity: 0.7 }}>— Eco Products</span>
+            NextGen <span style={{ opacity: 0.7 }}>Eco Bags</span>
           </span>
         </div>
 

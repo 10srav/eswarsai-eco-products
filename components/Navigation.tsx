@@ -88,7 +88,7 @@ export function Navigation() {
         <Link
           href="/"
           className="group flex items-center gap-3 font-semibold tracking-tight"
-          aria-label="Eswar Sai Eco Products home"
+          aria-label="NextGen Eco Bags home"
         >
           <span className="relative grid h-7 w-7 place-items-center rounded-full bg-leaf transition-transform duration-500 group-hover:rotate-[20deg]">
             <svg viewBox="0 0 24 24" className="h-4 w-4" fill="#0e2a1e">
@@ -96,7 +96,7 @@ export function Navigation() {
             </svg>
           </span>
           <span className="text-base md:text-lg">
-            Eswar Sai <span className="font-light opacity-70">— Eco Products</span>
+            NextGen <span className="font-light opacity-70">Eco Bags</span>
           </span>
         </Link>
 
@@ -182,7 +182,7 @@ export function Navigation() {
           </ul>
           <div className="text-sm opacity-70">
             <p>+91 91210 53678</p>
-            <p>hello@eswarsaiecoproducts.com</p>
+            <p>hello@nextgenecobags.com</p>
             <p>Kakinada, Andhra Pradesh</p>
           </div>
         </div>

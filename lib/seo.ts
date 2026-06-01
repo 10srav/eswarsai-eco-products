@@ -68,8 +68,8 @@ export function buildMetadata({
     other: {
       "geo.region": "IN-AP",
       "geo.placename": "Kakinada",
-      "geo.position": "16.9891;82.2475",
-      ICBM: "16.9891, 82.2475",
+      "geo.position": "17.0455277;82.1207793",
+      ICBM: "17.0455277, 82.1207793",
     },
   };
 }

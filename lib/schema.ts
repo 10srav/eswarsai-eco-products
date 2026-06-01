@@ -23,7 +23,7 @@ export const localBusinessSchema = {
     postalCode: company.address.postal,
     addressCountry: company.address.country,
   },
-  geo: { "@type": "GeoCoordinates", latitude: 16.9891, longitude: 82.2475 },
+  geo: { "@type": "GeoCoordinates", latitude: 17.0455277, longitude: 82.1207793 },
   areaServed: ["IN", "Andhra Pradesh", "Telangana", "Karnataka", "Tamil Nadu", "Maharashtra"],
   hasMap: company.socials.googleMaps,
   image: `${SITE}/opengraph-image`,

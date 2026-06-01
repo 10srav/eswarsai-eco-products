@@ -80,7 +80,7 @@ export function SustainabilityManifesto() {
         </div>
 
         <div className="mono mt-14 text-xs uppercase tracking-[0.3em] text-moss">
-          — Eswar Sai Eco Products · Kakinada, Andhra Pradesh · Since 2013
+          — NextGen Eco Bags · Kakinada, Andhra Pradesh · Since 2013
         </div>
       </Container>
     </section>

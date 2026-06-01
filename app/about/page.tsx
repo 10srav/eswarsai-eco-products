@@ -18,7 +18,7 @@ export const metadata = buildMetadata({
     "eco friendly bag manufacturer story",
     "non woven bag manufacturer Kakinada",
     "jute bag manufacturer Andhra Pradesh",
-    "Eswar Sai Eco Products",
+    "NextGen Eco Bags",
     "Kakinada",
     "Vizag bag manufacturer",
     "Hyderabad bag supplier",
@@ -73,8 +73,8 @@ export default function AboutPage() {
             </div>
             <div className="relative aspect-[4/5] overflow-hidden rounded-md md:aspect-[3/4]">
               <Image
-                src="/images/products/eswar-sai-kakinada-manufacturing-line.jpg"
-                alt="Eswar Sai non-woven bag manufacturing line in Kakinada, Andhra Pradesh"
+                src="/images/products/nextgen-eco-bags-kakinada-manufacturing-line.jpg"
+                alt="NextGen Eco Bags non-woven bag manufacturing line in Kakinada, Andhra Pradesh"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
