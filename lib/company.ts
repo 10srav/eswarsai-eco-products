@@ -10,11 +10,11 @@ export const company = {
   longDescription:
     "We are pioneers in manufacturing eco-friendly non-woven and jute bags, dedicated to providing customized and durable solutions that cater to your unique packaging needs while supporting environmental sustainability.",
   founded: FOUNDED,
-  url: "https://nextgenecobags.com",
+  url: "https://nextgenecobags.in",
   phone: "+91 91210 53678",
   phoneE164: "+919121053678",
   whatsappNumber: "919121053678",
-  email: "hello@nextgenecobags.com",
+  email: "hello@nextgenecobags.in",
   address: {
     line1: "#10-334, Flat No. 40",
     line2: "APIIC Colony, Rayudupalem, Ramanayyapeta",

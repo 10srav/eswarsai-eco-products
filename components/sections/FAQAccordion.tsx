@@ -25,8 +25,8 @@ export function FAQAccordion() {
             </h2>
             <p className="mt-6 text-sm leading-relaxed text-forest-deep/70">
               Don&apos;t see your question? WhatsApp us, or email{" "}
-              <a className="underline decoration-leaf decoration-1 underline-offset-4 hover:text-moss" href="mailto:hello@nextgenecobags.com">
-                hello@nextgenecobags.com
+              <a className="underline decoration-leaf decoration-1 underline-offset-4 hover:text-moss" href="mailto:hello@nextgenecobags.in">
+                hello@nextgenecobags.in
               </a>
               . Real humans answer.
             </p>

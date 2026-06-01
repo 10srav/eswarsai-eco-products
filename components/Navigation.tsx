@@ -182,7 +182,7 @@ export function Navigation() {
           </ul>
           <div className="text-sm opacity-70">
             <p>+91 91210 53678</p>
-            <p>hello@nextgenecobags.com</p>
+            <p>hello@nextgenecobags.in</p>
             <p>Kakinada, Andhra Pradesh</p>
           </div>
         </div>
