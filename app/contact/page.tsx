@@ -1,4 +1,5 @@
 import { PageHero } from "@/components/sections/PageHero";
+import { LeadFlow } from "@/components/sections/LeadFlow";
 import { EnquireForm } from "@/components/sections/EnquireForm";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
 import { JsonLd } from "@/components/JsonLd";
@@ -32,6 +33,7 @@ export default function ContactPage() {
         lede="Pick a product, share your size and quantity, and we'll prefill a WhatsApp message you can review and send. Or call us — we still answer the phone."
         variant="forest"
       />
+      <LeadFlow />
       <EnquireForm />
       <FAQAccordion />
       <JsonLd id="ld-faq-contact" data={faqSchema} />

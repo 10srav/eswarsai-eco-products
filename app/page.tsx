@@ -2,12 +2,17 @@ import { Hero } from "@/components/sections/Hero";
 import { Marquee } from "@/components/sections/Marquee";
 import { BrandStrip } from "@/components/sections/BrandStrip";
 import { EditorialBreak } from "@/components/sections/EditorialBreak";
-import { StoryPanels } from "@/components/sections/StoryPanels";
+import { PlasticStory } from "@/components/sections/PlasticStory";
+import { BagStudio } from "@/components/sections/BagStudio";
 import { ProductsPreview } from "@/components/sections/ProductsPreview";
+import { JourneyLine } from "@/components/sections/JourneyLine";
 import { ImpactCounters } from "@/components/sections/ImpactCounters";
+import { BeforeAfter } from "@/components/sections/BeforeAfter";
+import { RoiCalculator } from "@/components/sections/RoiCalculator";
+import { IndiaReach } from "@/components/sections/IndiaReach";
 import { SustainabilityStrip } from "@/components/sections/SustainabilityStrip";
 import { IndustriesPreview } from "@/components/sections/IndustriesPreview";
-import { ProcessSteps } from "@/components/sections/ProcessSteps";
+import { FoundersSection } from "@/components/sections/FoundersSection";
 import { GalleryPreview } from "@/components/sections/GalleryPreview";
 import { CTABanner } from "@/components/sections/CTABanner";
 
@@ -17,6 +22,9 @@ export default function HomePage() {
       <Hero />
       <Marquee />
       <BrandStrip />
+      <PlasticStory />
+      <BagStudio />
+      <ProductsPreview />
       <EditorialBreak
         image="/images/factory/non-woven-shopping-bag.jpg"
         alt="Reusable non-woven shopping bag"
@@ -26,22 +34,14 @@ export default function HomePage() {
         side="left"
         tone="dark"
       />
-      <StoryPanels />
-      <ProductsPreview />
+      <JourneyLine />
       <SustainabilityStrip />
       <ImpactCounters />
+      <BeforeAfter />
+      <RoiCalculator />
+      <IndiaReach />
       <IndustriesPreview />
-      <EditorialBreak
-        image="/images/products/nextgen-eco-bags-kakinada-manufacturing-line.jpg"
-        alt="Inside the manufacturing line"
-        kicker="Inside the line"
-        headline="Two production lines. In-house printing. Schedules we keep."
-        caption="From fibre to fold, we own every step. No middlemen, no missed dates."
-        side="right"
-        tone="dark"
-        height="short"
-      />
-      <ProcessSteps />
+      <FoundersSection variant="compact" />
       <GalleryPreview />
       <CTABanner />
     </>

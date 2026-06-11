@@ -2,6 +2,7 @@ import Image from "next/image";
 import { PageHero } from "@/components/sections/PageHero";
 import { Container } from "@/components/Container";
 import { CTABanner } from "@/components/sections/CTABanner";
+import { FoundersSection } from "@/components/sections/FoundersSection";
 import { ImpactCounters } from "@/components/sections/ImpactCounters";
 import { Timeline } from "@/components/sections/Timeline";
 import { JsonLd } from "@/components/JsonLd";
@@ -84,6 +85,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
+      <FoundersSection />
       <Timeline />
       <ImpactCounters />
       <CTABanner />

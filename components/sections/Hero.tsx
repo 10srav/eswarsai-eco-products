@@ -8,6 +8,7 @@ import { ArrowRight } from "lucide-react";
 import { Counter } from "@/components/ui/Counter";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { HeroBag } from "@/components/sections/HeroBag";
+import { HeroParticlesMount } from "@/components/three/HeroParticlesMount";
 import { company } from "@/lib/company";
 import { cn } from "@/lib/utils";
 
@@ -160,6 +161,8 @@ export function Hero() {
             "radial-gradient(ellipse at 80% 20%, rgba(149,213,178,0.28), transparent 50%), radial-gradient(ellipse at 10% 90%, rgba(82,183,136,0.22), transparent 60%)",
         }}
       />
+
+      <HeroParticlesMount />
 
       <div
         className="hero-edge pointer-events-none absolute right-4 top-1/2 z-20 hidden -translate-y-1/2 origin-right rotate-[-90deg] whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.3em] text-bone opacity-[0.55] md:block"
