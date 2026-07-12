@@ -5,6 +5,15 @@ const SITE = company.url;
 const TITLE_BASE = `${company.name} — Replace Plastic. Save Nature.`;
 const DESC_BASE = company.shortDescription;
 
+const DEFAULT_KEYWORDS = [
+  "eco bag manufacturer Kakinada",
+  "non woven bags Andhra Pradesh",
+  "jute bags wholesale India",
+  "custom printed carry bags",
+  "biodegradable shopping bags bulk",
+  "reusable bags manufacturer India",
+];
+
 const OG_IMAGE = {
   url: `${SITE}/opengraph-image`,
   width: 1200,
@@ -37,7 +46,7 @@ export function buildMetadata({
     metadataBase: new URL(SITE),
     title: fullTitle,
     description: desc,
-    ...(keywords ? { keywords } : {}),
+    keywords: keywords ?? DEFAULT_KEYWORDS,
     alternates: { canonical: url },
     robots: noindex
       ? { index: false, follow: false }
@@ -62,7 +71,7 @@ export function buildMetadata({
       images: [ogImage ?? OG_IMAGE.url],
     },
     icons: {
-      icon: "/favicon.svg",
+      icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
     },
     formatDetection: { telephone: true, address: true, email: true },
     other: {

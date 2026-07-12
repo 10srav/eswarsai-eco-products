@@ -115,6 +115,13 @@
   }
   ::selection { background: var(--color-leaf); color: var(--color-forest-deep); }
   :focus-visible { outline: 2px solid var(--color-forest-deep); outline-offset: 3px; box-shadow: 0 0 0 5px var(--color-bone); border-radius: 2px; }
+  /* Dark surfaces invert the ring so it stays visible against forest tones */
+  .bg-forest-deep :focus-visible,
+  .bg-forest :focus-visible,
+  .bg-moss :focus-visible {
+    outline-color: var(--color-sage);
+    box-shadow: 0 0 0 5px var(--color-forest-deep);
+  }
   a { color: inherit; text-decoration: none; }
   button { background: none; border: none; cursor: pointer; font: inherit; color: inherit; }
   img, svg { display: block; max-width: 100%; }

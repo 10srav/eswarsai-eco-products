@@ -1,5 +1,6 @@
 import { company } from "./company";
-import { products, type Product } from "./products";
+import { products, type Product, type Industry } from "./products";
+import { contactFaqs, type Faq } from "./faqs";
 
 const SITE = company.url;
 
@@ -59,6 +60,15 @@ export const websiteSchema = {
   inLanguage: "en-IN",
 };
 
+const materialByCategory: Record<Product["category"], string> = {
+  "Non-woven": "Polypropylene non-woven fabric",
+  Jute: "Natural jute fibre, laminated interior",
+  Promotional: "Non-woven, jute, or recycled cotton",
+  Shopping: "Reinforced polypropylene non-woven fabric",
+  Specialty: "Soft-touch polypropylene non-woven fabric",
+  Custom: "Polypropylene non-woven or jute, per specification",
+};
+
 export function productSchema(p: Product) {
   return {
     "@context": "https://schema.org",
@@ -68,42 +78,47 @@ export function productSchema(p: Product) {
     description: p.longDesc,
     image: `${SITE}${p.image.src}`,
     brand: { "@type": "Brand", name: company.name },
+    manufacturer: { "@id": `${SITE}#business` },
+    countryOfOrigin: { "@type": "Country", name: "India" },
+    material: materialByCategory[p.category],
     category: p.category,
     sku: p.slug,
+    audience: { "@type": "Audience", audienceType: "Wholesale and B2B buyers" },
+    additionalProperty: [
+      { "@type": "PropertyValue", name: "Specification", value: p.spec },
+      ...p.features.map((f) => ({ "@type": "PropertyValue", name: "Feature", value: f })),
+    ],
   };
 }
 
-export const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
+export function serviceSchema(industry: Industry) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${SITE}/industries/${industry.slug}#service`,
+    name: `${industry.name} bag manufacturing and wholesale supply`,
+    serviceType: `Custom eco bag manufacturing for ${industry.name.toLowerCase()}`,
+    description: industry.desc,
+    provider: { "@id": `${SITE}#business` },
+    areaServed: "IN",
+    url: `${SITE}/industries/${industry.slug}`,
+  };
+}
+
+export function faqPageSchema(faqs: Faq[], id?: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    ...(id ? { "@id": id } : {}),
+    mainEntity: faqs.map((f) => ({
       "@type": "Question",
-      name: "What's the minimum order quantity?",
-      acceptedAnswer: { "@type": "Answer", text: "Our standard MOQ is 1,000 pieces for stock SKUs and 5,000+ for fully custom prints. We can flex for sample runs." },
-    },
-    {
-      "@type": "Question",
-      name: "How long does sampling take?",
-      acceptedAnswer: { "@type": "Answer", text: "We send physical samples within 5 working days from approved artwork. Express samples in 48 hours for paid runs." },
-    },
-    {
-      "@type": "Question",
-      name: "Do you ship outside Andhra Pradesh?",
-      acceptedAnswer: { "@type": "Answer", text: "Yes — pan-India palletised despatch, plus exports on request. We've delivered to 28 states and 4 countries." },
-    },
-    {
-      "@type": "Question",
-      name: "Are your bags really food-safe?",
-      acceptedAnswer: { "@type": "Answer", text: "Yes. Our PP non-woven and laminated jute meet IS-9833 food-contact standards. Documentation available on request." },
-    },
-    {
-      "@type": "Question",
-      name: "Can I get a custom print on a small batch?",
-      acceptedAnswer: { "@type": "Answer", text: "Absolutely — flexo and screen printing both support 1–6 colours with Pantone matching, even on smaller batches." },
-    },
-  ],
-};
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+}
+
+export const faqSchema = faqPageSchema(contactFaqs);
 
 export const breadcrumbSchema = (items: { name: string; href: string }[]) => ({
   "@context": "https://schema.org",

@@ -25,6 +25,7 @@ const companyLinks = [
   { href: "/sustainability", label: "Sustainability" },
   { href: "/industries", label: "Industries" },
   { href: "/about", label: "About" },
+  { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -71,7 +72,7 @@ export function Footer() {
             <span>NextGen Eco Bags</span>
           </Link>
           <p className="mt-4 max-w-sm text-sm leading-relaxed opacity-65">
-            Premium non-woven & jute bag manufacturing. Built for businesses replacing plastic with purpose.
+            NextGen Eco Bags is an eco-friendly bag manufacturer in Kakinada, Andhra Pradesh — supplying non-woven, jute and custom-printed bags in bulk across India since 2013.
           </p>
         </div>
 

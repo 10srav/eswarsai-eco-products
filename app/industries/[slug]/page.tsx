@@ -9,7 +9,7 @@ import { MagneticButton } from "@/components/ui/MagneticButton";
 import { SplitText } from "@/components/ui/SplitText";
 import { JsonLd } from "@/components/JsonLd";
 import { buildMetadata } from "@/lib/seo";
-import { breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import { industries, industriesBySlug, productsForIndustry } from "@/lib/products";
 import { company } from "@/lib/company";
 
@@ -199,6 +199,7 @@ export default async function IndustryDetailPage({ params }: { params: Promise<P
 
       <CTABanner />
 
+      <JsonLd id={`ld-service-${industry.slug}`} data={serviceSchema(industry)} />
       <JsonLd
         id={`ld-breadcrumb-industry-${industry.slug}`}
         data={breadcrumbSchema([

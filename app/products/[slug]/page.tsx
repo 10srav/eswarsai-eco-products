@@ -7,9 +7,10 @@ import { ProductCard } from "@/components/sections/ProductCard";
 import { CTABanner } from "@/components/sections/CTABanner";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { SplitText } from "@/components/ui/SplitText";
+import { FAQAccordion } from "@/components/sections/FAQAccordion";
 import { JsonLd } from "@/components/JsonLd";
 import { buildMetadata } from "@/lib/seo";
-import { breadcrumbSchema, productSchema } from "@/lib/schema";
+import { breadcrumbSchema, faqPageSchema, productSchema } from "@/lib/schema";
 import { products, productsBySlug, type Product } from "@/lib/products";
 import { company } from "@/lib/company";
 
@@ -139,9 +140,16 @@ export default async function ProductDetailPage({ params }: { params: Promise<Pa
         </Container>
       </section>
 
+      <FAQAccordion
+        items={product.faqs}
+        kicker="Before you order"
+        heading="What buyers ask about this bag."
+      />
+
       <CTABanner />
 
       <JsonLd id={`ld-product-${product.slug}`} data={productSchema(product)} />
+      <JsonLd id={`ld-faq-${product.slug}`} data={faqPageSchema(product.faqs)} />
       <JsonLd
         id={`ld-breadcrumb-${product.slug}`}
         data={breadcrumbSchema([

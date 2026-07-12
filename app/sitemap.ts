@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/sustainability`, changeFrequency: "monthly" },
     { url: `${SITE}/gallery`, changeFrequency: "monthly" },
     { url: `${SITE}/contact`, changeFrequency: "monthly" },
+    { url: `${SITE}/faq`, changeFrequency: "monthly" },
   ];
 
   const productEntries: MetadataRoute.Sitemap = products.map((p) => ({

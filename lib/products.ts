@@ -1,3 +1,5 @@
+import type { Faq } from "./faqs";
+
 export type Product = {
   slug: string;
   number: string;
@@ -12,6 +14,7 @@ export type Product = {
   applications: string[];
   industries: string[];
   highlight?: boolean;
+  faqs: Faq[];
 };
 
 export const products: Product[] = [
@@ -29,6 +32,20 @@ export const products: Product[] = [
     features: ["Die-cut handle", "30–120 GSM range", "Up to 6-colour print", "Recyclable PP fabric", "Welded seams"],
     applications: ["Retail counters", "Pharmacy chains", "Grocery & kirana", "Express checkout"],
     industries: ["Retail", "Pharma", "FMCG", "Grocery"],
+    faqs: [
+      {
+        q: "What GSM should I choose for a D-cut non-woven bag?",
+        a: "The D-cut range runs 30–120 GSM. 30–60 GSM suits pharmacy and light retail counters, 60–90 GSM handles grocery and kirana loads, and 90–120 GSM gives a premium hand-feel. We confirm the right weight during sampling.",
+      },
+      {
+        q: "Can D-cut bags be printed with my logo?",
+        a: "Yes — up to 6-colour flexo or screen printing, Pantone-matched to your brand book. Print runs in-house, so artwork QA happens before production, not after.",
+      },
+      {
+        q: "Why don't D-cut handles tear off?",
+        a: "The bag is die-cut from a single sheet of PP non-woven with welded seams — there is no stitched-on handle to fail. Handles are load-tested for high-traffic retail counters.",
+      },
+    ],
   },
   {
     slug: "w-cut-non-woven",
@@ -44,6 +61,20 @@ export const products: Product[] = [
     features: ["Fold-stitched mouth", "Wide side gusset", "40–100 GSM range", "High carry capacity", "Bulk-friendly"],
     applications: ["Apparel & textile", "Weekly grocery", "Bulk distribution", "Conferences"],
     industries: ["Textile", "Retail", "Events", "Logistics"],
+    faqs: [
+      {
+        q: "What is the difference between W-cut and D-cut bags?",
+        a: "W-cut bags fold the fabric into a double-layer stitched mouth with a side gusset, giving extra capacity for shopping and textile loads. D-cut bags are die-cut from a single sheet for a cleaner, lighter presentation at retail counters.",
+      },
+      {
+        q: "How much weight can a W-cut bag carry?",
+        a: "The gusseted body and ultrasonic-welded mouth are engineered for heavy shopping and textile loads across the 60–120 GSM range. Tell us your typical load during sampling and we spec the GSM to match.",
+      },
+      {
+        q: "What is the MOQ for W-cut non-woven bags?",
+        a: "Standard MOQ is 1,000 pieces for stock colours and 5,000+ for fully custom prints — palletised, batch-labelled despatch across India.",
+      },
+    ],
   },
   {
     slug: "loop-handle",
@@ -59,6 +90,20 @@ export const products: Product[] = [
     features: ["Ultrasonic weld", "Soft-touch handle", "60–120 GSM range", "Multi-colour weave", "Boutique finish"],
     applications: ["Boutique apparel", "Cosmetics & beauty", "Wedding favours", "Premium gifting"],
     industries: ["Fashion", "Beauty", "Gifting", "Hospitality"],
+    faqs: [
+      {
+        q: "What makes loop-handle bags feel premium?",
+        a: "Soft-touch fabric in 60–120 GSM, ultrasonic-welded handles that match the body's lifecycle, and multi-colour weave options with a boutique finish. It is the bag customers keep, not bin.",
+      },
+      {
+        q: "Are loop-handle bags good for boutiques and gifting?",
+        a: "Yes — boutique apparel, cosmetics, wedding favours and premium gifting are their core use. Low-MOQ runs from 500 pieces are supported for boutique drops.",
+      },
+      {
+        q: "Can loop-handle bags match my brand colours?",
+        a: "Multi-colour weave and Pantone-matched printing mean the bag itself carries your palette — up to 8 print colours for boutique work.",
+      },
+    ],
   },
   {
     slug: "classic-jute-tote",
@@ -75,6 +120,20 @@ export const products: Product[] = [
     applications: ["Premium retail", "Lifestyle brands", "Conferences", "Gifting kits"],
     industries: ["Fashion", "Lifestyle", "Hospitality", "Events"],
     highlight: true,
+    faqs: [
+      {
+        q: "Are jute tote bags compostable?",
+        a: "Yes. Jute is a plant fibre that composts in months, not centuries. Our totes use 10–14 oz fabric from audited Indian mills — heavy carry strength with a light environmental footprint.",
+      },
+      {
+        q: "Are jute bags food-safe?",
+        a: "Our totes carry a laminated interior that keeps the natural earth-feel outside while staying fully food-safe inside, meeting IS-9833 food-contact standards.",
+      },
+      {
+        q: "Can jute totes be custom printed?",
+        a: "Yes — screen printing with monograms, mandala motifs and full brand artwork. Wedding favours, corporate gifting and boutique editions are printed in-house.",
+      },
+    ],
   },
   {
     slug: "branded-promotional",
@@ -90,6 +149,20 @@ export const products: Product[] = [
     features: ["1–6 colour print", "Pantone matching", "5-day samples", "MOQ 1,000 pcs", "In-house artwork QA"],
     applications: ["Conferences", "Wedding favours", "Corporate gifting", "Brand activations"],
     industries: ["Marketing", "Events", "Corporate", "Hospitality"],
+    faqs: [
+      {
+        q: "How many colours can promotional bags be printed in?",
+        a: "1–6 colour flexo and screen printing as standard, Pantone-matched to your brand book. Artwork is proofed in-house before production so conference and wedding editions land exactly as designed.",
+      },
+      {
+        q: "How fast can I get promotional bag samples?",
+        a: "Physical samples despatch within 5 working days of approved artwork, with 48-hour express samples for paid runs — built for event timelines that don't move.",
+      },
+      {
+        q: "Can you deliver directly to my event venue?",
+        a: "Yes. Per-event SKU management, labelled bundles and direct-to-venue despatch are standard — we coordinate with your event ops timeline.",
+      },
+    ],
   },
   {
     slug: "heavy-duty-shopper",
@@ -105,6 +178,20 @@ export const products: Product[] = [
     features: ["Reinforced base", "15kg load rated", "Extra-wide gusset", "Welded handles", "Reusable 200×"],
     applications: ["Grocery hauls", "Supermarket chains", "Farmer's markets", "Bulk produce"],
     industries: ["Retail", "Grocery", "FMCG", "Wholesale"],
+    faqs: [
+      {
+        q: "How much weight can a heavy-duty shopper carry?",
+        a: "Rated for 15 kg dynamic load with a welded double-base and extra-wide gusset — it passes the drop testing modern trade demands for weekly grocery hauls.",
+      },
+      {
+        q: "How many times can a heavy-duty shopper be reused?",
+        a: "Engineered for 200+ uses. The reinforced base and welded handles are built to match the body's lifecycle, so the carbon math beats single-use plastic in the first month.",
+      },
+      {
+        q: "Which businesses use heavy-duty shoppers?",
+        a: "Supermarket chains, grocery retailers, farmer's markets and FMCG brands moving bulk produce — anywhere bags fail first at the base or the handle.",
+      },
+    ],
   },
   {
     slug: "drawstring-pouch",
@@ -120,6 +207,20 @@ export const products: Product[] = [
     features: ["Soft-touch fabric", "Woven drawstring", "Custom sizes", "Tear-resistant", "E-com friendly"],
     applications: ["Footwear", "Lingerie & innerwear", "Jewellery", "E-commerce inserts"],
     industries: ["Fashion", "E-commerce", "Lifestyle", "Beauty"],
+    faqs: [
+      {
+        q: "What sizes do drawstring pouches come in?",
+        a: "Any size you need — micro pouches for jewellery, mid-size for footwear and lingerie, large for apparel inserts. Every run is cut to your spec in soft-touch, tear-resistant non-woven.",
+      },
+      {
+        q: "Are drawstring pouches good for e-commerce packaging?",
+        a: "Yes — they are pick-and-pack friendly, protect the product in transit, and turn unboxing into a branded moment D2C customers re-share. Edition runs start from 1,000 pieces.",
+      },
+      {
+        q: "What are the drawstrings made of?",
+        a: "Woven drawstrings paired with soft-touch non-woven fabric — smooth to cinch, strong enough for repeat use across footwear, beauty and subscription-box editions.",
+      },
+    ],
   },
   {
     slug: "custom-bespoke",
@@ -136,6 +237,20 @@ export const products: Product[] = [
     applications: ["New product launches", "Limited editions", "Brand collaborations", "Sustainability-led packaging"],
     industries: ["All sectors"],
     highlight: true,
+    faqs: [
+      {
+        q: "How does the custom bag process work?",
+        a: "Send a brief — sizes, GSM, gauges, finishes, colour swatches, MOQ — and we send a sample within 5 working days. On approval, production moves to in-house print, cut and stitch with full QC on each line.",
+      },
+      {
+        q: "Can I bring my own bag design?",
+        a: "Yes. Bring finished artwork or a rough idea — we either produce to your files or engineer the bag with you, from fabric choice to final print.",
+      },
+      {
+        q: "What can be customised on a bespoke bag?",
+        a: "Everything: size, GSM, gauge, fabric (non-woven or jute), colour, finish, handle style and 1–8 colour print. If it can be cut and welded, we can build it.",
+      },
+    ],
   },
 ];
 

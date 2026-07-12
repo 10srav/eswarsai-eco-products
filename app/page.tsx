@@ -1,3 +1,4 @@
+import { buildMetadata } from "@/lib/seo";
 import { Hero } from "@/components/sections/Hero";
 import { Marquee } from "@/components/sections/Marquee";
 import { BrandStrip } from "@/components/sections/BrandStrip";
@@ -15,6 +16,22 @@ import { IndustriesPreview } from "@/components/sections/IndustriesPreview";
 import { FoundersSection } from "@/components/sections/FoundersSection";
 import { GalleryPreview } from "@/components/sections/GalleryPreview";
 import { CTABanner } from "@/components/sections/CTABanner";
+
+export const metadata = buildMetadata({
+  title: "Eco Bag Manufacturer in Kakinada, Andhra Pradesh",
+  description:
+    "Non-woven, jute and custom-printed eco bags made in Kakinada, delivered in bulk across India. 40M+ bags since 2013. Samples in 5 days, MOQ from 1,000.",
+  path: "/",
+  keywords: [
+    "eco bag manufacturer Kakinada",
+    "non woven bags Andhra Pradesh",
+    "jute bags wholesale India",
+    "custom printed carry bags",
+    "biodegradable shopping bags bulk",
+    "non woven bag manufacturer India",
+    "eco friendly bags B2B",
+  ],
+});
 
 export default function HomePage() {
   return (
